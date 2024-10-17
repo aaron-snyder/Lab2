@@ -52,7 +52,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
      */
     static class VideoViewHolder extends RecyclerView.ViewHolder{
         // UI components
-        TextView textVideoTitle1, textVideoDescription1;
+        TextView textVideoTitle1, textVideoDescription1, textVideoID;
         VideoView videoView;
         ProgressBar progressBar;
 
@@ -66,6 +66,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             videoView = itemView.findViewById(R.id.videoView);
             textVideoTitle1 = itemView.findViewById(R.id.textViewTitle);
             textVideoDescription1 = itemView.findViewById(R.id.textVideoDescription);
+            textVideoID = itemView.findViewById(R.id.textVideoID);
             progressBar = itemView.findViewById(R.id.videoProgressBar);
         }
 
@@ -76,6 +77,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             textVideoDescription1.setText(videoItem.videoDescription);
             // Set the video URL in the VideoView
             videoView.setVideoPath(videoItem.videoUrl);
+            textVideoID.setText("ID: " + Integer.toString(videoItem.videoId));
 
             // Set a listener to handle actions when the video is ready to play
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
